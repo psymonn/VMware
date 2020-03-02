@@ -1,0 +1,232 @@
+----------------------------------------------
+I delibrately ping ntp to a wrong server:
+----------------------------------------------
+e.g
+"os": {
+            "password": "VMware1!",
+            "ntp_servers": "172.17.5.252",
+            "ssh_enable": true
+        },
+-----------------------------------------------
+Below is what it's failed:
+
+PS D:\vcsa-cli-installer\win32> ./vcsa-deploy install --accept-eula --no-esx-ssl-verify -v "F:\GitHub\Source\Terraform\Projects\VCSA CLI Install\embedded_vCSA_on_ESXi_6.7.json"
+Updating log file location, copying 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\vcsa-cli-installer.log' to desired location as a backup: 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\workflow_1583152582050\vcsa-cli-installer.log.bak'
+Adding the following cli arguments to blackboard {'cli_arg_acknowledge_ceip':
+False, 'cli_arg_template': ['F:\\GitHub\\Source\\Terraform\\Projects\\VCSA CLI
+Install\\embedded_vCSA_on_ESXi_6.7.json'], 'cli_arg_verify_template_only':
+False, 'cli_arg_sub_command': 'install', 'cli_arg_log_dir': None,
+'cli_arg_template_help': False, 'cli_arg_verbose': True,
+'cli_arg_pause_on_warnings': False, 'cli_arg_precheck_only': False,
+'cli_arg_accept_eula': True, 'cli_arg_supported_deployment_sizes': False,
+'cli_arg_operation_id': None, 'cli_arg_skip_precheck': False,
+'cli_arg_no_ssl_certificate_verification': True, 'cli_arg_terse': False,
+'cli_arg_no_esx_ssl_verify': True}
+Workflow log-dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\workflow_1583152582050
+CLIOptionsValidationTask: Executing CLI optionsValidation task
+====== [START] Start executing Task: To validate CLI options at 12:36:22 ======
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+Command line arguments verfied.
+ [SUCCEEDED] Successfully executed Task 'CLIOptionsValidationTask: Executing CLI
+optionsValidation task' in TaskFlow 'template_validation' at 12:36:22
+SyntaxValidationTask: Executing Template Syntax Validation task
+ [START] Start executing Task: To validate the syntax of the template. at
+12:36:23
+Template syntax validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Syntax validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'SyntaxValidationTask: Executing
+Template Syntax Validation task' in TaskFlow 'template_validation' at 12:36:23
+VersionProcessingTask: Executing Template Version Processing task
+ [START] Start executing Task: To check the version of each template, and for
+each older template that supports CEIP, convert it to the latest template
+format, and save it to the Template Blackboard at 12:36:23
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+Template version processing for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Version processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'VersionProcessingTask: Executing
+Template Version Processing task' in TaskFlow 'template_validation' at 12:36:24
+StructureValidationTask: Executing Template Structure Validation task
+ [START] Start executing Task: To validate the template structure against the
+rules specified by a corresponding template schema. at 12:36:24
+Checking section 'new_vcsa'
+    Checking subsection 'ovftool_arguments'
+    Checking subsection 'esxi'
+        Key 'datastore' is valid.
+        Key 'password' is valid.
+        Key 'deployment_network' is valid.
+        Key 'username' is valid.
+        Key 'port' is valid.
+        Key 'hostname' is valid.
+    Checking subsection 'vc'
+    Checking subsection 'sso'
+        The 'new_vcsa sso password' password meets the installation
+requirements.
+        Key 'password' is valid.
+        Key 'sso_port' is valid.
+        Key 'domain_name' is valid.
+        Key 'first_instance' is valid.
+    Checking subsection 'appliance'
+        Key 'name' is valid.
+        Key 'thin_disk_mode' is valid.
+        Key 'deployment_option' is valid.
+        Key 'ovftool_path' is valid.
+    Checking subsection 'os'
+        The 'new_vcsa os password' password meets the installation requirements.
+        Key 'password' is valid.
+        Key 'ssh_enable' is valid.
+        Key 'ntp_servers' is valid.
+    Checking subsection 'network'
+        Key 'gateway' is valid.
+        Key 'dns_servers' is valid.
+        Key 'mode' is valid.
+        Key 'ip' is valid.
+        Key 'system_name' is valid.
+Validating the IP family 'ipv4' with the ESXi hostname '172.17.5.10'
+        Key 'ip_family' is valid.
+Validating the prefix '24' with IP family 'ipv4', mode 'static'
+        Key 'prefix' is valid.
+Checking section 'ceip'
+    Checking subsection 'description'
+    Checking subsection 'settings'
+Template structure validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Structure validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'StructureValidationTask: Executing
+Template Structure Validation task' in TaskFlow 'template_validation' at
+12:36:25
+DependencyProcessingTask: Executing Template Dependency Processing task
+ [START] Start executing Task: To create a dependency graph for the provided
+templates, with an edge pairing two templates that are dependent on each other.
+Such graph relationships will affect whether certain templates can be deployed
+in parallel, or must be deployed sequentially. at 12:36:25
+Finished forming template dependencies.
+Number of graph nodes: 1
+-- Template dependency relationships: 0 --
+Dependency processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'DependencyProcessingTask: Executing
+Template Dependency Processing task' in TaskFlow 'template_validation' at
+12:36:26
+Determining template dependencies for operation INSTALL
+Successfully constructed requirement collector for operation install
+PrecheckTask: Prechecks log_dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\workflow_1583152582050\embedded_vCSA_on_ESXi_6.7\prechecks
+Template for this deployment:  { '__version': '2.13.0',   'ceip':
+{'description': {}, 'settings': {'ceip_enabled': False}},   'new_vcsa': {
+'appliance': { 'deployment_option': 'tiny',
+'name': 'vCenter-Test',                                'ovftool_path':
+'D:\\vcsa-cli-installer\\win32\\..\\..\\vcsa\\ovftool\\win32\\ovftool.exe',
+'thin_disk_mode': True},                 'esxi': { 'datastore':
+'datastore1_NVMe',                           'deployment_network': 'Production
+Server',                           'hostname': '172.17.5.10',
+'password': '******',                           'port': 443,
+'username': 'root'},                 'network': { 'dns_servers': '172.17.5.130',
+'gateway': '172.17.5.1',                              'ip': '172.17.5.250',
+'ip_family': 'ipv4',                              'mode': 'static',
+'prefix': '24',                              'system_name':
+'vcentre-test.redink.com'},                 'os': { 'ntp_servers':
+'172.17.5.252',                         'password': '******',
+'ssh_enable': True},                 'sso': { 'domain_name': 'vsphere.local',
+'first_instance': True,                          'password': '******',
+'sso_port': 443}}}
+Writing template as a file:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\workflow_1583152582050\embedded_vCSA_on_ESXi_6.7\template.json
+workflow successfully constructed, it contains 1 taskflows ready to execute
+SrcRequirementTask: Running SrcRequirementTask
+ [START] Start executing Task: Validate that requirements are met in the source
+VCSA. at 12:36:27
+InstallRequirementCollector: Reached gathering requirement
+ [SUCCEEDED] Successfully executed Task 'SrcRequirementTask: Running
+SrcRequirementTask' in TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 12:36:27
+PrecheckTask: Running prechecks.
+====== [START] Start executing Task: Perform precheck tasks. at 12:36:28 ======
+Running precheck: TargetCredentials
+ [START] Start executing Task: Verify that the provided credentials for the
+target ESXi/VC are valid at 12:36:28
+The certificate of server '172.17.5.10' will not be verified because you have
+provided either the '--no-ssl-certificate-verification' or '--no-esx-ssl-verify'
+command parameter, which disables verification for all certificates. Remove this
+parameter from the command line if you want server certificates to be verified.
+Proceed with certificate thumbprint check...
+Cannot connect to '172.17.5.10' on which the vCenter Server Appliance is
+running. The exception message is: Failed to log in to server '172.17.5.10' as
+user 'root' with error '(vim.fault.InvalidLogin) {    dynamicType = <unset>,
+dynamicProperty = (vmodl.DynamicProperty) [],    msg = 'Cannot complete login
+due to an incorrect user name or password.',    faultCause = <unset>,
+faultMessage = (vmodl.LocalizableMessage) [] }'. If the error message contains
+references about messages being expired, a login problem, or its context
+indicates a timing issue, a possible reason could be system clock skew. Refer to
+error messages in 'taskflow.log' for more details.
+================ [FAILED] Task: Running precheck: TargetCredentials execution
+failed at 12:36:35 ================
+Task 'Running precheck: TargetCredentials' execution failed because
+[TargetCredentials: Cannot connect to '172.17.5.10' on which the vCenter Server
+Appliance is running. The exception message is 'Failed to log in to server
+'172.17.5.10' as user 'root' with error '(vim.fault.InvalidLogin) {
+dynamicType = <unset>,    dynamicProperty = (vmodl.DynamicProperty) [],    msg =
+'Cannot complete login due to an incorrect user name or password.',
+faultCause = <unset>,    faultMessage = (vmodl.LocalizableMessage) [] }'. If the
+error message contains references about messages being expired, a login problem,
+or its context indicates a timing issue, a possible reason could be system clock
+skew. Refer to error messages in 'taskflow.log' for more details. ' Check the
+credentials provided for this server in the template file. If a proxy server is
+present, make sure its policy does not block connections to this server. ],
+possible resolution is []
+================================================================================
+================ [FAILED] Task: PrecheckTask: Running prechecks. execution
+failed at 12:36:35 ================
+Task 'PrecheckTask: Running prechecks.' execution failed because
+[TargetCredentials: Cannot connect to '172.17.5.10' on which the vCenter Server
+Appliance is running. The exception message is 'Failed to log in to server
+'172.17.5.10' as user 'root' with error '(vim.fault.InvalidLogin) {
+dynamicType = <unset>,    dynamicProperty = (vmodl.DynamicProperty) [],    msg =
+'Cannot complete login due to an incorrect user name or password.',
+faultCause = <unset>,    faultMessage = (vmodl.LocalizableMessage) [] }'. If the
+error message contains references about messages being expired, a login problem,
+or its context indicates a timing issue, a possible reason could be system clock
+skew. Refer to error messages in 'taskflow.log' for more details. ' Check the
+credentials provided for this server in the template file. If a proxy server is
+present, make sure its policy does not block connections to this server. ],
+possible resolution is []
+================================================================================
+Exception message: TargetCredentials: Cannot connect to '172.17.5.10' on which
+the vCenter Server Appliance is running. The exception message is 'Failed to log
+in to server '172.17.5.10' as user 'root' with error '(vim.fault.InvalidLogin) {
+dynamicType = <unset>,    dynamicProperty = (vmodl.DynamicProperty) [],    msg =
+'Cannot complete login due to an incorrect user name or password.',
+faultCause = <unset>,    faultMessage = (vmodl.LocalizableMessage) [] }'. If the
+error message contains references about messages being expired, a login problem,
+or its context indicates a timing issue, a possible reason could be system clock
+skew. Refer to error messages in 'taskflow.log' for more details. ' Check the
+credentials provided for this server in the template file. If a proxy server is
+present, make sure its policy does not block connections to this server. Trace:
+File
+"d:\build\ob\bora-14743302\bora\install\vcsa-installer\vcsaCliInstaller\cli_tasks\precheck\precheck_task.py",
+line 78, in execute   File
+"d:\build\ob\bora-14743302\bora\install\vcsa-installer\vcsaCliInstaller\tasking\taskflow.py",
+line 998, in execute   File
+"d:\build\ob\bora-14743302\bora\install\vcsa-installer\vcsaCliInstaller\tasking\taskflow.py",
+line 964, in _execute_single_threaded  ==============================
+=================================== 12:36:36 ===================================
+Result and Log File Information...
+WorkFlow log directory:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-12-36-gqwtlpv2\workflow_1583152582050
+PS D:\vcsa-cli-installer\win32> 
