@@ -1,0 +1,29 @@
+./vcsa-deploy install --accept-eula --no-esx-ssl-verify ~/Desktop/embedded_vCSA_on_ESXi.json
+
+admin@pop-os:/media/admin/CDROM/vcsa-cli-installer/lin64$ ./vcsa-deploy --accept-eula --no-esx-ssl-verify ~/Desktop/Projects/VCSA\ CLI\ Install/embedded_vCSA_on_ESXi.json
+
+./vcsa-deploy --accept-eula --no-esx-ssl-verify ~/Desktop/Projects/VCSA\ CLI\ Install/embedded_vCSA_on_ESXi.json
+
+
+vcsa-cli-installer/templates
+
+/CDROM/vcsa-cli-installer/lin64$
+
+vcsa-deploy
+
+-------------------------------------------------------------------------------
+Sucessful build:
+-------------------------------------------------------------------------------
+
+PS D:\vcsa-cli-installer\win32> ./vcsa-deploy install
+Previous versions of this script defaulted to 'install' when no subcommand was specified. Running without a subcommand is no longer allowed. Specify 'install' as a subcommand if you want to run installation. Usage: vcsa-deploy.exe install [-h] [--template-help] [--log-dir LOG_DIR]
+                               [--skip-ovftool-verification] [--accept-eula]
+                               [--acknowledge-ceip] [--pause-on-warnings]
+                               [--operation-id OPERATION_ID] [-v | -t]
+                               [--no-esx-ssl-verify | --no-ssl-certificate-verification]
+                               [--verify-template-only | --precheck-only]
+                               template [template ...]
+
+
+cd D:\vcsa-cli-installer\win32
+./vcsa-deploy install --accept-eula --no-esx-ssl-verify -v "F:\GitHub\Source\Terraform\Projects\VCSA CLI Install\embedded_vCSA_on_ESXi_6.7.json"

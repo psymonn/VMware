@@ -1,0 +1,1028 @@
+PS D:\vcsa-cli-installer\win32> ./vcsa-deploy install --accept-eula --no-esx-ssl-verify -v "F:\GitHub\Source\Terraform\Projects\VCSA CLI Install\embedded_vCSA_on_ESXi_6.7.json"
+Updating log file location, copying 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\vcsa-cli-installer.log' to desired location as a backup: 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\vcsa-cli-installer.log.bak'
+Adding the following cli arguments to blackboard {'cli_arg_precheck_only':
+False, 'cli_arg_template': ['F:\\GitHub\\Source\\Terraform\\Projects\\VCSA CLI
+Install\\embedded_vCSA_on_ESXi_6.7.json'], 'cli_arg_template_help': False,
+'cli_arg_terse': False, 'cli_arg_acknowledge_ceip': False,
+'cli_arg_supported_deployment_sizes': False, 'cli_arg_log_dir': None,
+'cli_arg_accept_eula': True, 'cli_arg_pause_on_warnings': False,
+'cli_arg_operation_id': None, 'cli_arg_sub_command': 'install',
+'cli_arg_skip_precheck': False, 'cli_arg_no_ssl_certificate_verification': True,
+'cli_arg_no_esx_ssl_verify': True, 'cli_arg_verbose': True,
+'cli_arg_verify_template_only': False}
+Workflow log-dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059
+CLIOptionsValidationTask: Executing CLI optionsValidation task
+====== [START] Start executing Task: To validate CLI options at 11:38:04 ======
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+Command line arguments verfied.
+ [SUCCEEDED] Successfully executed Task 'CLIOptionsValidationTask: Executing CLI
+optionsValidation task' in TaskFlow 'template_validation' at 11:38:05
+SyntaxValidationTask: Executing Template Syntax Validation task
+ [START] Start executing Task: To validate the syntax of the template. at
+11:38:05
+Template syntax validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Syntax validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'SyntaxValidationTask: Executing
+Template Syntax Validation task' in TaskFlow 'template_validation' at 11:38:06
+VersionProcessingTask: Executing Template Version Processing task
+ [START] Start executing Task: To check the version of each template, and for
+each older template that supports CEIP, convert it to the latest template
+format, and save it to the Template Blackboard at 11:38:06
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+Template version processing for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Version processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'VersionProcessingTask: Executing
+Template Version Processing task' in TaskFlow 'template_validation' at 11:38:08
+StructureValidationTask: Executing Template Structure Validation task
+ [START] Start executing Task: To validate the template structure against the
+rules specified by a corresponding template schema. at 11:38:08
+Checking section 'new_vcsa'
+    Checking subsection 'network'
+        Key 'mode' is valid.
+        Key 'gateway' is valid.
+        Key 'system_name' is valid.
+        Key 'dns_servers' is valid.
+        Key 'ip' is valid.
+Validating the IP family 'ipv4' with the ESXi hostname '172.17.5.10'
+        Key 'ip_family' is valid.
+Validating the prefix '24' with IP family 'ipv4', mode 'static'
+        Key 'prefix' is valid.
+    Checking subsection 'esxi'
+        Key 'username' is valid.
+        Key 'hostname' is valid.
+        Key 'datastore' is valid.
+        Key 'port' is valid.
+        Key 'deployment_network' is valid.
+        Key 'password' is valid.
+    Checking subsection 'ovftool_arguments'
+    Checking subsection 'sso'
+        Key 'first_instance' is valid.
+        Key 'sso_port' is valid.
+        The 'new_vcsa sso password' password meets the installation
+requirements.
+        Key 'password' is valid.
+        Key 'domain_name' is valid.
+    Checking subsection 'os'
+        Key 'ntp_servers' is valid.
+        The 'new_vcsa os password' password meets the installation requirements.
+        Key 'password' is valid.
+        Key 'ssh_enable' is valid.
+    Checking subsection 'vc'
+    Checking subsection 'appliance'
+        Key 'name' is valid.
+        Key 'deployment_option' is valid.
+        Key 'ovftool_path' is valid.
+        Key 'thin_disk_mode' is valid.
+Checking section 'ceip'
+    Checking subsection 'description'
+    Checking subsection 'settings'
+Template structure validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Structure validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'StructureValidationTask: Executing
+Template Structure Validation task' in TaskFlow 'template_validation' at
+11:38:09
+DependencyProcessingTask: Executing Template Dependency Processing task
+ [START] Start executing Task: To create a dependency graph for the provided
+templates, with an edge pairing two templates that are dependent on each other.
+Such graph relationships will affect whether certain templates can be deployed
+in parallel, or must be deployed sequentially. at 11:38:09
+Finished forming template dependencies.
+Number of graph nodes: 1
+-- Template dependency relationships: 0 --
+Dependency processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'DependencyProcessingTask: Executing
+Template Dependency Processing task' in TaskFlow 'template_validation' at
+11:38:09
+Determining template dependencies for operation INSTALL
+Successfully constructed requirement collector for operation install
+PrecheckTask: Prechecks log_dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\prechecks
+Template for this deployment:  { '__version': '2.13.0',   'ceip':
+{'description': {}, 'settings': {'ceip_enabled': False}},   'new_vcsa': {
+'appliance': { 'deployment_option': 'tiny',
+'name': 'vCenter-Test',                                'ovftool_path':
+'D:\\vcsa-cli-installer\\win32\\..\\..\\vcsa\\ovftool\\win32\\ovftool.exe',
+'thin_disk_mode': True},                 'esxi': { 'datastore':
+'datastore1_NVMe',                           'deployment_network': 'Production
+Server',                           'hostname': '172.17.5.10',
+'password': '******',                           'port': 443,
+'username': 'root'},                 'network': { 'dns_servers': '172.17.5.130',
+'gateway': '172.17.5.1',                              'ip': '172.17.5.250',
+'ip_family': 'ipv4',                              'mode': 'static',
+'prefix': '24',                              'system_name':
+'vCenter-Test.redink.com'},                 'os': { 'ntp_servers':
+'172.17.5.130',                         'password': '******',
+'ssh_enable': True},                 'sso': { 'domain_name': 'vsphere.local',
+'first_instance': True,                          'password': '******',
+'sso_port': 443}}}
+Writing template as a file:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\template.json
+workflow successfully constructed, it contains 1 taskflows ready to execute
+SrcRequirementTask: Running SrcRequirementTask
+ [START] Start executing Task: Validate that requirements are met in the source
+VCSA. at 11:38:11
+InstallRequirementCollector: Reached gathering requirement
+ [SUCCEEDED] Successfully executed Task 'SrcRequirementTask: Running
+SrcRequirementTask' in TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 11:38:11
+PrecheckTask: Running prechecks.
+====== [START] Start executing Task: Perform precheck tasks. at 11:38:12 ======
+Running precheck: TargetCredentials
+ [START] Start executing Task: Verify that the provided credentials for the
+target ESXi/VC are valid at 11:38:12
+The certificate of server '172.17.5.10' will not be verified because you have
+provided either the '--no-ssl-certificate-verification' or '--no-esx-ssl-verify'
+command parameter, which disables verification for all certificates. Remove this
+parameter from the command line if you want server certificates to be verified.
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetCredentials' in
+TaskFlow 'install' at 11:38:13
+Running precheck: HostConfigs
+ [START] Start executing Task: Precheck CPU, memory and datastore size
+requirements for a host. at 11:38:13
+Proceed with certificate thumbprint check...
+Found datastore 'datastore1_NVMe' in host 'esxiMgt1.redink.com': Capacity =
+458.25 GB. Free space = 178.27 GB. Found non-clustered host
+'esxiMgt1.redink.com'. Memory size: 64 GB. Logical CPU (core) count: 16.
+Hyperthreading is enabled.
+Host 'esxiMgt1.redink.com': Standalone (non-clustered) host requirements are
+met.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: HostConfigs' in
+TaskFlow 'install' at 11:38:16
+Running precheck: TargetHostType
+ [START] Start executing Task: Verify the target host type matches the one given
+in the template at 11:38:16
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetHostType' in
+TaskFlow 'install' at 11:38:16
+Running precheck: TargetVersion
+ [START] Start executing Task: Verify that the target ESXi or VC version meets
+the minimum requirements at 11:38:17
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetVersion' in
+TaskFlow 'install' at 11:38:17
+Running precheck: OVAProperties.
+ [START] Start executing Task: Validate that the OVA image has the required OVA
+properties. at 11:38:17
+ [SUCCEEDED] Successfully executed Task 'Running precheck: OVAProperties.' in
+TaskFlow 'install' at 11:38:18
+Running precheck: IpFqdnInUse
+ [START] Start executing Task: Validate the provided ip/fqdn is available to use
+at 11:38:18
+Pinging IPv4 address 172.17.5.250
+Ping Result error 1:   Pinging 172.17.5.250 with 32 bytes of data:  Request
+timed out.  Request timed out.    Ping statistics for 172.17.5.250:
+Packets: Sent = 2, Received = 0, Lost = 2 (100% loss),  )
+Time-out pinging 172.17.5.250.
+Pinging IPv4 address vCenter-Test.redink.com
+Ping Result error 1:   Pinging 209.15.13.134 with 32 bytes of data:  Request
+timed out.  Request timed out.    Ping statistics for 209.15.13.134:
+Packets: Sent = 2, Received = 0, Lost = 2 (100% loss),  )
+Time-out pinging vCenter-Test.redink.com.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: IpFqdnInUse' in
+TaskFlow 'install' at 11:38:36
+Running task: DeprecationWarningTask
+ [START] Start executing Task: Check and warn about vCenter server with external
+Platform services controller topology deprecation in future vCenter releases. at
+11:38:37
+ [SUCCEEDED] Successfully executed Task 'Running task: DeprecationWarningTask'
+in TaskFlow 'install' at 11:38:37
+Running precheck: ESXManagementStatus
+ [START] Start executing Task: Validate the target ESXi management status at
+11:38:37
+Proceed with certificate thumbprint check...
+DRS Warning:  The target ESXi host '172.17.5.10' is managed by vCenter Server
+'172.17.5.20'.  If any of these hosts are in a cluster, and DRS is enabled,
+vMotion can take effect and adversely impact the installation, upgrade, or
+migration processes.  It is recommended that you use the *_on_VC.json template
+file for the target ESXi host if it is managed by a vCenter Server, and ensure
+the ESXi hosts you have specified are not members of clusters with DRS set to
+Fully Automated during the installation, upgrade, or migration processes.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: ESXManagementStatus'
+in TaskFlow 'install' at 11:38:38
+Running precheck: ApplianceName
+ [START] Start executing Task: Validate the provided target appliance name is
+available to use at 11:38:38
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: ApplianceName' in
+TaskFlow 'install' at 11:38:39
+Running precheck: TargetDsFreespace
+ [START] Start executing Task: Check whether the datastore's free space
+accommodate the VCSA's deployment option at 11:38:39
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetDsFreespace' in
+TaskFlow 'install' at 11:38:39
+Running precheck: SSOCredentials
+ [START] Start executing Task: Verify the provided SSO info is valid by
+connecting to the STS service. at 11:38:40
+ [SUCCEEDED] Successfully executed Task 'Running precheck: SSOCredentials' in
+TaskFlow 'install' at 11:38:40
+Running precheck: SSOExternal
+ [START] Start executing Task: Verify that the provided external SSO
+(PSC)/Embedded info is valid at 11:38:40
+Skipping the 'Verify that the provided external SSO (PSC)/Embedded info is
+valid' precheck as there is no external SSO information.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: SSOExternal' in
+TaskFlow 'install' at 11:38:40
+ [SUCCEEDED] Successfully executed Task 'PrecheckTask: Running prechecks.' in
+TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 11:38:41
+Deploying vCenter Server Appliance
+ [START] Start executing Task: Invoke OVF Tool to deploy VCSA for installation,
+upgrade, and migration at 11:38:42
+Prepare to execute OVF Tool command
+'--guestinfo.cis.deployment.autoconfig' is set to: True
+See
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\ovftool.log
+for the OVF Tool logs.
+--------------------------------------------------------------------------------
+Generated OVF Tool command line:
+D:\vcsa-cli-installer\win32\..\..\vcsa\ovftool\win32\ovftool.exe
+--X:enableHiddenProperties --sourceType=OVA --powerOn --X:injectOvfEnv
+--prop:guestinfo.cis.deployment.autoconfig=True --noSSLVerify
+--skipManifestCheck --allowExtraConfig --acceptAllEulas --X:waitForIp
+--X:logFile=C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\ovftool.log
+--X:logLevel=verbose --X:logTransferHeaderData --name=vCenter-Test
+--datastore=datastore1_NVMe --prop:guestinfo.cis.deployment.node.type=embedded
+--deploymentOption=tiny --diskMode=thin --net:Network 1=Production Server
+--prop:guestinfo.cis.appliance.net.prefix=24
+--prop:guestinfo.cis.vmdir.domain-name=vsphere.local
+--prop:guestinfo.cis.appliance.net.pnid=vCenter-Test.redink.com
+--prop:guestinfo.cis.ceip_enabled=False
+--prop:guestinfo.cis.appliance.net.addr.family=ipv4
+--prop:guestinfo.cis.appliance.net.mode=static
+--prop:guestinfo.cis.vmdir.first-instance=True
+--prop:guestinfo.cis.appliance.net.addr=172.17.5.250
+--prop:guestinfo.cis.appliance.ntp.servers=172.17.5.130
+--prop:guestinfo.cis.appliance.root.passwd=******
+--prop:guestinfo.cis.system.vm0.port=443
+--prop:guestinfo.cis.appliance.ssh.enabled=True
+--prop:guestinfo.cis.appliance.net.dns.servers=172.17.5.130
+--prop:guestinfo.cis.appliance.net.gateway=172.17.5.1
+--prop:guestinfo.cis.vmdir.password=******
+D:\vcsa-cli-installer\win32\..\..\vcsa\VMware-vCenter-Server-Appliance-6.7.0.42000-15132721_OVF10.ova
+vi://root:******@172.17.5.10:443
+--------------------------------------------------------------------------------
+'--guestinfo.cis.deployment.autoconfig' is set to: True
+See
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\ovftool.log
+for the OVF Tool logs.
+OVF Tool: Opening OVA source:
+D:\vcsa-cli-installer\win32\..\..\vcsa\VMware-vCenter-Server-Appliance-6.7.0.42000-15132721_OVF10.ova
+OVF Tool:  The manifest does not validate
+OVF Tool:  Opening VI target: vi://root@172.17.5.10:443/
+OVF Tool:  Deploying to VI: vi://root@172.17.5.10:443/
+OVF Tool: Disk progress: 99%
+OVF Tool: Transfer Completed
+OVF Tool:  Powering on VM: vCenter-Test
+OVF Tool: Task progress: 0%
+OVF Tool: Task Completed
+OVF Tool:  Waiting for IP address...
+OVF Tool: Received IP address: 172.17.5.250
+OVF Tool:  Completed successfully
+ [SUCCEEDED] Successfully executed Task 'Deploying vCenter Server Appliance' in
+TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 11:41:14
+MonitorDeploymentTask: Monitoring Deployment
+ [START] Start executing Task: Monitor the entire VCSA deployment using
+appliance REST API at 11:41:15
+Proceed with certificate thumbprint check...
+Successfully found the target VCSA 'vCenter-Test on esxi '172.17.5.10'
+Checking if the target VCSA is powered on and ready for operations...
+Successfully verified that the target VCSA 'vCenter-Test' has been powered on
+and is now ready for operations
+Checking if the target VCSA appliance API is available for query
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+The certificate of server '172.17.5.250' will not be verified because you have
+provided either the '--no-ssl-certificate-verification' or '--no-esx-ssl-verify'
+command parameter, which disables verification for all certificates. Remove this
+parameter from the command line if you want server certificates to be verified.
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because:
+HTTPSConnectionPool(host='172.17.5.250', port=5480): Max retries exceeded with
+url: /rest/vcenter/deployment (Caused by
+NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at
+0x0526D050>: Failed to establish a new connection: [WinError 10060] A connection
+attempt failed because the connected party did not properly respond after a
+period of time, or established connection failed because connected host has
+failed to respond',)). If the error message contains references about messages
+being expired, a login problem, or its context indicates a timing issue, a
+possible reason could be system clock skew. Refer to error messages in
+'taskflow.log' for more details.
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'HTTPSConnectionPool(host='172.17.5.250', port=5480): Max
+retries exceeded with url: /rest/vcenter/deployment (Caused by
+NewConnectionError('<urllib3.connection.VerifiedHTTPSConnection object at
+0x0526D050>: Failed to establish a new connection: [WinError 10060] A connection
+attempt failed because the connected party did not properly respond after a
+period of time, or established connection failed because connected host has
+failed to respond',)). If the error message contains references about messages
+being expired, a login problem, or its context indicates a timing issue, a
+possible reason could be system clock skew. Refer to error messages in
+'taskflow.log' for more details. '. The VCSA might still be starting up.'. Will
+retry in 30 seconds, timeout in 1800 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1770 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1740 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Successfully verified that the target VCSA appliance API is available for query
+Start monitoring target VCSA deployment, deployment status will be written into:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vcsa_deployment.json
+Start querying appliance API for deployment status
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(FAILED 0/100)      - Starting
+VMware Appliance Configuration...                 Error: The supplied System
+Name vCenter-Test.redink.com is not valid.                 Resolution: If the
+supplied system name is a FQDN, then make sure the DNS forward lookup results in
+at least one valid IP address in the system. If the supplied system name is an
+IP address, then it should be one of the valid IP address(es) in the system.
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(FAILED 0/100)      - Starting
+VMware Appliance Configuration...                 Error: The supplied System
+Name vCenter-Test.redink.com is not valid.                 Resolution: If the
+supplied system name is a FQDN, then make sure the DNS forward lookup results in
+at least one valid IP address in the system. If the supplied system name is an
+IP address, then it should be one of the valid IP address(es) in the system.
+The VCSA deployment has failed VCSA Deployment Start Time:
+2020-03-02T11:39:47.462Z VCSA Deployment End Time: 2020-03-02T11:42:04.469Z
+Ready to collect support bundle from deployed appliance, if applicable
+Proceed with certificate thumbprint check...
+Proceed with certificate thumbprint check...
+Successfully collected support bundle and stored at:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle.tgz
+Extracting
+vc-vCenter-Test.redink.com-2020-03-02--11.42-14011/var/log/firstboot/fbInstall.json
+to directory
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle-1583149458
+Extracting
+vc-vCenter-Test.redink.com-2020-03-02--11.42-14011/var/log/firstboot/rpmInstall.json
+to directory
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle-1583149458
+The root directory of extracted support bundle is
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle-1583149458\vc-vCenter-Test.redink.com-2020-03-02--11.42-14011
+Collecting errors from support bundle log:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle-1583149458\vc-vCenter-Test.redink.com-2020-03-02--11.42-14011\var/log/firstboot/rpmInstall.json
+There is no error found in support bundle log:
+'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059\embedded_vCSA_on_ESXi_6.7\vc-support-bundle-1583149458\vc-vCenter-Test.redink.com-2020-03-02--11.42-14011\var/log/firstboot/rpmInstall.json'
+Collecting errors from support bundle log:
+Monitoring VCSA Deploy task completed
+Exception message: The VCSA deployment has failed VCSA Deployment Start Time:
+2020-03-02T11:39:47.462Z VCSA Deployment End Time: 2020-03-02T11:42:04.469Z
+Trace:
+=================================== 11:44:25 ===================================
+Result and Log File Information...
+WorkFlow log directory:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-38-duyqi7tw\workflow_1583149083059
+
+There were two dns servers on my windows 10:
+Solution: removed the one not used; try again:
+C:\Users\TI>nslookup vcentre-test.redink.com
+Server:  www.routerlogin.com
+Address:  192.168.20.1
+
+Non-authoritative answer:
+Name:    vcentre-test.redink.com
+Address:  209.15.13.134
+
+
+C:\Users\TI>nslookup vcentre-test.redink.com
+Server:  www.routerlogin.com
+Address:  192.168.20.1
+
+Non-authoritative answer:
+Name:    vcentre-test.redink.com
+Address:  209.15.13.134
+
+
+C:\Users\TI>nslookup vcentre-test.redink.com
+Server:  redink-dc-01.redink.com
+Address:  172.17.5.130
+
+Name:    vcentre-test.redink.com
+Address:  172.17.5.250
+
+----------------------------------------------------------------------------------------
+try again - SUCCESSFUL BUILD
+----------------------------------------------------------------------------------------
+PS D:\vcsa-cli-installer\win32> ./vcsa-deploy install --accept-eula --no-esx-ssl-verify -v "F:\GitHub\Source\Terraform\Projects\VCSA CLI Install\embedded_vCSA_on_ESXi_6.7.json"
+Updating log file location, copying 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\vcsa-cli-installer.log' to desired location as a backup: 'C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\vcsa-cli-installer.log.bak'
+Adding the following cli arguments to blackboard {'cli_arg_accept_eula': True,
+'cli_arg_terse': False, 'cli_arg_skip_precheck': False, 'cli_arg_template':
+['F:\\GitHub\\Source\\Terraform\\Projects\\VCSA CLI
+Install\\embedded_vCSA_on_ESXi_6.7.json'], 'cli_arg_verbose': True,
+'cli_arg_no_esx_ssl_verify': True, 'cli_arg_verify_template_only': False,
+'cli_arg_sub_command': 'install', 'cli_arg_acknowledge_ceip': False,
+'cli_arg_log_dir': None, 'cli_arg_operation_id': None,
+'cli_arg_no_ssl_certificate_verification': True, 'cli_arg_pause_on_warnings':
+False, 'cli_arg_supported_deployment_sizes': False, 'cli_arg_precheck_only':
+False, 'cli_arg_template_help': False}
+Workflow log-dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067
+CLIOptionsValidationTask: Executing CLI optionsValidation task
+====== [START] Start executing Task: To validate CLI options at 11:59:48 ======
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+Command line arguments verfied.
+ [SUCCEEDED] Successfully executed Task 'CLIOptionsValidationTask: Executing CLI
+optionsValidation task' in TaskFlow 'template_validation' at 11:59:48
+SyntaxValidationTask: Executing Template Syntax Validation task
+ [START] Start executing Task: To validate the syntax of the template. at
+11:59:49
+Template syntax validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Syntax validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'SyntaxValidationTask: Executing
+Template Syntax Validation task' in TaskFlow 'template_validation' at 11:59:49
+VersionProcessingTask: Executing Template Version Processing task
+ [START] Start executing Task: To check the version of each template, and for
+each older template that supports CEIP, convert it to the latest template
+format, and save it to the Template Blackboard at 11:59:49
+Deprecation Warning: The command parameter '--no-esx-ssl-verify' is deprecated.
+You must use the new parameter '--no-ssl-certificate-verification' in the next
+deployment.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+CEIP is not enabled because the template key 'ceip_enabled' in section 'ceip',
+subsection 'settings' in template 'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' was set to 'false'.
+Template version processing for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Version processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'VersionProcessingTask: Executing
+Template Version Processing task' in TaskFlow 'template_validation' at 11:59:50
+StructureValidationTask: Executing Template Structure Validation task
+ [START] Start executing Task: To validate the template structure against the
+rules specified by a corresponding template schema. at 11:59:51
+Checking section 'ceip'
+    Checking subsection 'description'
+    Checking subsection 'settings'
+Checking section 'new_vcsa'
+    Checking subsection 'network'
+Validating the prefix '24' with IP family 'ipv4', mode 'static'
+        Key 'prefix' is valid.
+Validating the IP family 'ipv4' with the ESXi hostname '172.17.5.10'
+        Key 'ip_family' is valid.
+        Key 'gateway' is valid.
+        Key 'dns_servers' is valid.
+        Key 'system_name' is valid.
+        Key 'mode' is valid.
+        Key 'ip' is valid.
+    Checking subsection 'sso'
+        Key 'first_instance' is valid.
+        The 'new_vcsa sso password' password meets the installation
+requirements.
+        Key 'password' is valid.
+        Key 'domain_name' is valid.
+        Key 'sso_port' is valid.
+    Checking subsection 'os'
+        The 'new_vcsa os password' password meets the installation requirements.
+        Key 'password' is valid.
+        Key 'ssh_enable' is valid.
+        Key 'ntp_servers' is valid.
+    Checking subsection 'vc'
+    Checking subsection 'appliance'
+        Key 'name' is valid.
+        Key 'ovftool_path' is valid.
+        Key 'deployment_option' is valid.
+        Key 'thin_disk_mode' is valid.
+    Checking subsection 'ovftool_arguments'
+    Checking subsection 'esxi'
+        Key 'port' is valid.
+        Key 'hostname' is valid.
+        Key 'datastore' is valid.
+        Key 'username' is valid.
+        Key 'password' is valid.
+        Key 'deployment_network' is valid.
+Template structure validation for template
+'F:\GitHub\Source\Terraform\Projects\VCSA CLI
+Install\embedded_vCSA_on_ESXi_6.7.json' succeeded.
+Structure validation for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'StructureValidationTask: Executing
+Template Structure Validation task' in TaskFlow 'template_validation' at
+11:59:52
+DependencyProcessingTask: Executing Template Dependency Processing task
+ [START] Start executing Task: To create a dependency graph for the provided
+templates, with an edge pairing two templates that are dependent on each other.
+Such graph relationships will affect whether certain templates can be deployed
+in parallel, or must be deployed sequentially. at 11:59:52
+Finished forming template dependencies.
+Number of graph nodes: 1
+-- Template dependency relationships: 0 --
+Dependency processing for all templates succeeded.
+ [SUCCEEDED] Successfully executed Task 'DependencyProcessingTask: Executing
+Template Dependency Processing task' in TaskFlow 'template_validation' at
+11:59:52
+Determining template dependencies for operation INSTALL
+Successfully constructed requirement collector for operation install
+PrecheckTask: Prechecks log_dir
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\prechecks
+Template for this deployment:  { '__version': '2.13.0',   'ceip':
+{'description': {}, 'settings': {'ceip_enabled': False}},   'new_vcsa': {
+'appliance': { 'deployment_option': 'tiny',
+'name': 'vCenter-Test',                                'ovftool_path':
+'D:\\vcsa-cli-installer\\win32\\..\\..\\vcsa\\ovftool\\win32\\ovftool.exe',
+'thin_disk_mode': True},                 'esxi': { 'datastore':
+'datastore1_NVMe',                           'deployment_network': 'Production
+Server',                           'hostname': '172.17.5.10',
+'password': '******',                           'port': 443,
+'username': 'root'},                 'network': { 'dns_servers': '172.17.5.130',
+'gateway': '172.17.5.1',                              'ip': '172.17.5.250',
+'ip_family': 'ipv4',                              'mode': 'static',
+'prefix': '24',                              'system_name':
+'vcentre-test.redink.com'},                 'os': { 'ntp_servers':
+'172.17.5.130',                         'password': '******',
+'ssh_enable': True},                 'sso': { 'domain_name': 'vsphere.local',
+'first_instance': True,                          'password': '******',
+'sso_port': 443}}}
+Writing template as a file:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\template.json
+workflow successfully constructed, it contains 1 taskflows ready to execute
+SrcRequirementTask: Running SrcRequirementTask
+ [START] Start executing Task: Validate that requirements are met in the source
+VCSA. at 11:59:54
+InstallRequirementCollector: Reached gathering requirement
+ [SUCCEEDED] Successfully executed Task 'SrcRequirementTask: Running
+SrcRequirementTask' in TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 11:59:54
+PrecheckTask: Running prechecks.
+====== [START] Start executing Task: Perform precheck tasks. at 11:59:55 ======
+Running precheck: TargetCredentials
+ [START] Start executing Task: Verify that the provided credentials for the
+target ESXi/VC are valid at 11:59:55
+The certificate of server '172.17.5.10' will not be verified because you have
+provided either the '--no-ssl-certificate-verification' or '--no-esx-ssl-verify'
+command parameter, which disables verification for all certificates. Remove this
+parameter from the command line if you want server certificates to be verified.
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetCredentials' in
+TaskFlow 'install' at 11:59:56
+Running precheck: HostConfigs
+ [START] Start executing Task: Precheck CPU, memory and datastore size
+requirements for a host. at 11:59:56
+Proceed with certificate thumbprint check...
+Found datastore 'datastore1_NVMe' in host 'esxiMgt1.redink.com': Capacity =
+458.25 GB. Free space = 178.27 GB. Found non-clustered host
+'esxiMgt1.redink.com'. Memory size: 64 GB. Logical CPU (core) count: 16.
+Hyperthreading is enabled.
+Host 'esxiMgt1.redink.com': Standalone (non-clustered) host requirements are
+met.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: HostConfigs' in
+TaskFlow 'install' at 11:59:59
+Running precheck: TargetHostType
+ [START] Start executing Task: Verify the target host type matches the one given
+in the template at 11:59:59
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetHostType' in
+TaskFlow 'install' at 11:59:59
+Running precheck: TargetVersion
+ [START] Start executing Task: Verify that the target ESXi or VC version meets
+the minimum requirements at 12:00:00
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetVersion' in
+TaskFlow 'install' at 12:00:00
+Running precheck: OVAProperties.
+ [START] Start executing Task: Validate that the OVA image has the required OVA
+properties. at 12:00:00
+ [SUCCEEDED] Successfully executed Task 'Running precheck: OVAProperties.' in
+TaskFlow 'install' at 12:00:01
+Running precheck: IpFqdnInUse
+ [START] Start executing Task: Validate the provided ip/fqdn is available to use
+at 12:00:01
+Pinging IPv4 address 172.17.5.250
+Ping Result error 1:   Pinging 172.17.5.250 with 32 bytes of data:  Request
+timed out.  Request timed out.    Ping statistics for 172.17.5.250:
+Packets: Sent = 2, Received = 0, Lost = 2 (100% loss),  )
+Time-out pinging 172.17.5.250.
+Pinging IPv4 address vcentre-test.redink.com
+Ping Result error None:   Pinging 172.17.5.250 with 32 bytes of data:  Request
+timed out.  Reply from 172.17.5.111: Destination host unreachable.    Ping
+statistics for 172.17.5.250:      Packets: Sent = 2, Received = 1, Lost = 1 (50%
+loss),  )
+vcentre-test.redink.com is unreachable.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: IpFqdnInUse' in
+TaskFlow 'install' at 12:00:18
+Running task: DeprecationWarningTask
+ [START] Start executing Task: Check and warn about vCenter server with external
+Platform services controller topology deprecation in future vCenter releases. at
+12:00:19
+ [SUCCEEDED] Successfully executed Task 'Running task: DeprecationWarningTask'
+in TaskFlow 'install' at 12:00:19
+Running precheck: ESXManagementStatus
+ [START] Start executing Task: Validate the target ESXi management status at
+12:00:19
+Proceed with certificate thumbprint check...
+DRS Warning:  The target ESXi host '172.17.5.10' is managed by vCenter Server
+'172.17.5.20'.  If any of these hosts are in a cluster, and DRS is enabled,
+vMotion can take effect and adversely impact the installation, upgrade, or
+migration processes.  It is recommended that you use the *_on_VC.json template
+file for the target ESXi host if it is managed by a vCenter Server, and ensure
+the ESXi hosts you have specified are not members of clusters with DRS set to
+Fully Automated during the installation, upgrade, or migration processes.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: ESXManagementStatus'
+in TaskFlow 'install' at 12:00:20
+Running precheck: ApplianceName
+ [START] Start executing Task: Validate the provided target appliance name is
+available to use at 12:00:20
+Proceed with certificate thumbprint check...
+ [SUCCEEDED] Successfully executed Task 'Running precheck: ApplianceName' in
+TaskFlow 'install' at 12:00:21
+Running precheck: TargetDsFreespace
+ [START] Start executing Task: Check whether the datastore's free space
+accommodate the VCSA's deployment option at 12:00:21
+ [SUCCEEDED] Successfully executed Task 'Running precheck: TargetDsFreespace' in
+TaskFlow 'install' at 12:00:21
+Running precheck: SSOCredentials
+ [START] Start executing Task: Verify the provided SSO info is valid by
+connecting to the STS service. at 12:00:22
+ [SUCCEEDED] Successfully executed Task 'Running precheck: SSOCredentials' in
+TaskFlow 'install' at 12:00:22
+Running precheck: SSOExternal
+ [START] Start executing Task: Verify that the provided external SSO
+(PSC)/Embedded info is valid at 12:00:22
+Skipping the 'Verify that the provided external SSO (PSC)/Embedded info is
+valid' precheck as there is no external SSO information.
+ [SUCCEEDED] Successfully executed Task 'Running precheck: SSOExternal' in
+TaskFlow 'install' at 12:00:22
+ [SUCCEEDED] Successfully executed Task 'PrecheckTask: Running prechecks.' in
+TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 12:00:23
+Deploying vCenter Server Appliance
+ [START] Start executing Task: Invoke OVF Tool to deploy VCSA for installation,
+upgrade, and migration at 12:00:23
+Prepare to execute OVF Tool command
+'--guestinfo.cis.deployment.autoconfig' is set to: True
+See
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\ovftool.log
+for the OVF Tool logs.
+--------------------------------------------------------------------------------
+Generated OVF Tool command line:
+D:\vcsa-cli-installer\win32\..\..\vcsa\ovftool\win32\ovftool.exe
+--X:injectOvfEnv --allowExtraConfig --sourceType=OVA --powerOn
+--prop:guestinfo.cis.deployment.autoconfig=True --acceptAllEulas --noSSLVerify
+--X:waitForIp --X:enableHiddenProperties --skipManifestCheck
+--X:logFile=C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\ovftool.log
+--X:logLevel=verbose --X:logTransferHeaderData --name=vCenter-Test
+--datastore=datastore1_NVMe --prop:guestinfo.cis.deployment.node.type=embedded
+--deploymentOption=tiny --diskMode=thin --net:Network 1=Production Server
+--prop:guestinfo.cis.appliance.net.addr.family=ipv4
+--prop:guestinfo.cis.appliance.net.dns.servers=172.17.5.130
+--prop:guestinfo.cis.appliance.net.pnid=vcentre-test.redink.com
+--prop:guestinfo.cis.ceip_enabled=False
+--prop:guestinfo.cis.appliance.ssh.enabled=True
+--prop:guestinfo.cis.appliance.ntp.servers=172.17.5.130
+--prop:guestinfo.cis.vmdir.domain-name=vsphere.local
+--prop:guestinfo.cis.appliance.net.gateway=172.17.5.1
+--prop:guestinfo.cis.vmdir.first-instance=True
+--prop:guestinfo.cis.appliance.net.mode=static
+--prop:guestinfo.cis.vmdir.password=******
+--prop:guestinfo.cis.appliance.root.passwd=******
+--prop:guestinfo.cis.appliance.net.addr=172.17.5.250
+--prop:guestinfo.cis.system.vm0.port=443
+--prop:guestinfo.cis.appliance.net.prefix=24
+D:\vcsa-cli-installer\win32\..\..\vcsa\VMware-vCenter-Server-Appliance-6.7.0.42000-15132721_OVF10.ova
+vi://root:******@172.17.5.10:443
+--------------------------------------------------------------------------------
+'--guestinfo.cis.deployment.autoconfig' is set to: True
+See
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\ovftool.log
+for the OVF Tool logs.
+OVF Tool: Opening OVA source:
+D:\vcsa-cli-installer\win32\..\..\vcsa\VMware-vCenter-Server-Appliance-6.7.0.42000-15132721_OVF10.ova
+OVF Tool:  The manifest does not validate
+OVF Tool:  Opening VI target: vi://root@172.17.5.10:443/
+OVF Tool:  Deploying to VI: vi://root@172.17.5.10:443/
+OVF Tool: Disk progress: 99%
+OVF Tool: Transfer Completed
+OVF Tool:  Powering on VM: vCenter-Test
+OVF Tool: Task progress: 0%
+OVF Tool: Task Completed
+OVF Tool:  Waiting for IP address...
+OVF Tool: Received IP address: 172.17.5.250
+OVF Tool:  Completed successfully
+ [SUCCEEDED] Successfully executed Task 'Deploying vCenter Server Appliance' in
+TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 12:03:21
+MonitorDeploymentTask: Monitoring Deployment
+ [START] Start executing Task: Monitor the entire VCSA deployment using
+appliance REST API at 12:03:21
+Proceed with certificate thumbprint check...
+Successfully found the target VCSA 'vCenter-Test on esxi '172.17.5.10'
+Checking if the target VCSA is powered on and ready for operations...
+Successfully verified that the target VCSA 'vCenter-Test' has been powered on
+and is now ready for operations
+Checking if the target VCSA appliance API is available for query
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+The certificate of server '172.17.5.250' will not be verified because you have
+provided either the '--no-ssl-certificate-verification' or '--no-esx-ssl-verify'
+command parameter, which disables verification for all certificates. Remove this
+parameter from the command line if you want server certificates to be verified.
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1800 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1770 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1740 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Failed to query REST endpoint '/rest/vcenter/deployment' on appliance IP
+'172.17.5.250' for deployment status because: None
+Operation 'Checking target VCSA has appliance REST API ready' is going to retry
+because 'The appliance REST API was not yet available from the target VCSA
+'vCenter-Test'because 'Failed to query deployment status for appliance
+vCenter-Test after trying all ip addresses'. The VCSA might still be starting
+up.'. Will retry in 30 seconds, timeout in 1710 seconds
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+Successfully verified that the target VCSA appliance API is available for query
+Start monitoring target VCSA deployment, deployment status will be written into:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067\embedded_vCSA_on_ESXi_6.7\vcsa_deployment.json
+Start querying appliance API for deployment status
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 2/100)     - Starting
+VMware Authentication Framework...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 2/100)     - Starting
+VMware Authentication Framework...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 12/100)    - Starting
+VMware Service Lifecycle Manager...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 25/100)    - Starting
+VMware Service Control Agent...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 40/100)    - Starting
+VMware Postgres...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 55/100)    - Starting
+VMware Topology Service...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 60/100)    - Starting
+VMware vCenter Server...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 62/100)    - Starting
+VMware Content Library Service...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 65/100)    - Starting
+VMware ESX Agent Manager...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 72/100)    - Starting
+VMware Update Manager...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 82/100)    - Starting
+VMware VSAN Health Service...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(RUNNING 97/100)    - Starting
+VMware Performance Charts...
+VCSA Deployment is still running
+Proceed with certificate thumbprint check...
+Retrieved all ip addresses from appliance vCenter-Test: ['172.17.5.250']
+Querying REST endpoint '/rest/vcenter/deployment' on appliance '172.17.5.250'
+for deployment status
+Proceed with certificate thumbprint check...
+Requesting deployment status from target vCSA REST API endpoint
+'https://172.17.5.250:5480/rest/vcenter/deployment'
+==========VCSA Deployment Progress Report==========         Task: Install
+required RPMs for the appliance.(SUCCEEDED 100/100)       - Task has completed
+successfully.         Task: Run firstboot scripts.(SUCCEEDED 100/100) - Task has
+completed successfully.
+Successfully completed VCSA deployment.  VCSA Deployment Start Time:
+2020-03-02T12:01:23.411Z VCSA Deployment End Time: 2020-03-02T12:11:02.960Z
+ [SUCCEEDED] Successfully executed Task 'MonitorDeploymentTask: Monitoring
+Deployment' in TaskFlow 'embedded_vCSA_on_ESXi_6.7' at 12:12:00
+Monitoring VCSA Deploy task completed
+ApplianceLoginSummaryTask: Provide appliance login information.
+ [START] Start executing Task: Provide the login information about new
+appliance. at 12:12:01
+    Appliance Name: vCenter-Test
+    System Name: vcentre-test.redink.com
+    System IP: 172.17.5.250
+    Log in as: Administrator@vsphere.local
+ [SUCCEEDED] Successfully executed Task 'ApplianceLoginSummaryTask: Provide
+appliance login information.' in TaskFlow 'embedded_vCSA_on_ESXi_6.7' at
+12:12:01
+vcsa-deploy execution successfully completed, workflow log dir:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067
+=================================== 12:12:02 ===================================
+Result and Log File Information...
+WorkFlow log directory:
+C:\Users\TI\AppData\Local\Temp\vcsaCliInstaller-2020-03-02-11-59-5bj71zxf\workflow_1583150388067
+PS D:\vcsa-cli-installer\win32> 
+
