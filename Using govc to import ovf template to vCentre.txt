@@ -1,4 +1,16 @@
+Reference:
+https://github.com/vmware/govmomi/blob/master/govc/USAGE.md
 https://giedrius.blog/2018/04/23/terraform-vsphere-provider-1-x-now-supports-deploying-ova-files-makes-using-ovftool-on-esxi-hosts-obsolete/
+https://vmsysadmin.wordpress.com/2019/09/14/getting-started-with-govc-on-windows/
+https://github.com/terraform-providers/terraform-provider-vsphere/blob/master/examples/ovf-template/scripts/template.sh
+https://giedrius.blog/2018/04/23/terraform-vsphere-provider-1-x-now-supports-deploying-ova-files-makes-using-ovftool-on-esxi-hosts-obsolete/
+https://serverfault.com/questions/915526/uploading-an-ova-to-vsphere-as-template-not-vm
+https://www.virtuallyghetto.com/2016/04/slick-way-of-deploying-ovfova-directly-to-esxi-vcenter-server-using-govc-cli.html
+https://cloudmaniac.net/ova-ovf-deployment-using-govc-cli/
+https://blog.linoproject.net/terraforming-my-vsphere-lab-part-1/
+https://www.terraform.io/docs/providers/vsphere/r/virtual_machine.html
+https://www.unixarena.com/2019/06/govmomi-installing-and-configuring-govc-cli-for-vsphere.html/
+
 ------------------------------
 Currently tested on Windows:
 ------------------------------
@@ -30,7 +42,7 @@ import ovf file:
 PS F:\Template_ovf> govc import.ovf -ds="datastore1_NVMe" -folder="terraform-test-folder2" -pool="Normal Resource Pool" -dc="Datacenter1" -name="template_from_ovf" coreos_production_vmware_ova.ovf
 
 -----------------------------------------------------------------------
-Commands: https://fabianlee.org/2019/03/09/vmware-using-the-govc-cli-to-automate-vcenter-commands/
+Commands: https://fabianlee.org/2019/03/09/vmware-using-the-govc-cli-to-automate-vcenter-commands/            
 -----------------------------------------------------------------------
 PS F:\Template_ovf> ls env:GOVC*
 
@@ -97,6 +109,9 @@ PS F:\Template_ovf> govc import.ovf -dc="Datacenter1" -name="template_redhat_ovf
 [K[11-03-20 01:10:08] Uploading Template_RedHat_7.6-2.iso... OK7%, 37.7MiB/s)
 [K[11-03-20 01:10:09] Uploading Template_RedHat_7.6-3.nvram... OK
 PS F:\Template_ovf>
+
+Clone:
+govc snapshot.create -dc="Datacenter1"  -vm="template_redhat_ovf" clone-root
 
 ---------------------------------------------------------------------------------------------------
 Convert to Template:
