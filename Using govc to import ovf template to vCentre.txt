@@ -1,0 +1,104 @@
+https://giedrius.blog/2018/04/23/terraform-vsphere-provider-1-x-now-supports-deploying-ova-files-makes-using-ovftool-on-esxi-hosts-obsolete/
+------------------------------
+Currently tested on Windows:
+------------------------------
+preset (setup environment first):
+$env:GOVC_URL="administrator@vsphere.local:password@192.168.5.20"
+$env:GOVC_INSECURE=1
+$env:GOVC_RESOURCE_POOL='Normal Resource Pool' (not required)
+$env:GOVC_DATASTORE="datastore1_NVMe"
+
+--------------------------------
+or
+---------------------------------
+$env:GOVC_URL="192.168.5.20"
+$env:GOVC_USERNAME= "administrator@vsphere.local"
+$env:GOVC_PASSWORD= "password"
+$env:GOVC_INSECURE="true"
+$env:GOVC_DATASTORE="datastore1_NVMe"
+$env:GOVC_RESOURCE_POOL='Normal Resource Pool'  (not required)
+
+-----------------
+import ova file:
+-----------------
+PS F:\Template_ovf> govc import.ova -ds="datastore1_NVMe" -folder="terraform-test-folder2" -pool="Normal Resource Pool" -dc="Datacenter1" -name="template_from_ovf" coreos_production_vmware_ova.ova
+F:\Data\App\govc_windows\govc.exe: The virtual machine is not supported on the target datastore.  --------because vcenter only support ovf file
+
+-----------------
+import ovf file:
+-----------------
+PS F:\Template_ovf> govc import.ovf -ds="datastore1_NVMe" -folder="terraform-test-folder2" -pool="Normal Resource Pool" -dc="Datacenter1" -name="template_from_ovf" coreos_production_vmware_ova.ovf
+
+-----------------------------------------------------------------------
+Commands: https://fabianlee.org/2019/03/09/vmware-using-the-govc-cli-to-automate-vcenter-commands/
+-----------------------------------------------------------------------
+PS F:\Template_ovf> ls env:GOVC*
+
+Name                           Value
+----                           -----
+GOVC_PASSWORD                  *****
+GOVC_RESOURCE_POOL             Normal Resource Pool
+GOVC_USERNAME                  administrator@vsphere.local
+GOVC_INSECURE                  true
+GOVC_DATASTORE                 datastore1_NVMe
+GOVC_URL                       192.168.5.20
+
+
+PS F:\Template_ovf> govc vm.info -dc=Datacenter1 -json "Openfiler 1"
+
+PS F:\Template_ovf> govc datacenter.info
+Name:                Datacenter2
+  Path:              /Datacenter2
+  Hosts:             3
+  Clusters:          3
+  Virtual Machines:  66
+  Networks:          10
+  Datastores:        7
+Name:                Datacenter1
+  Path:              /Datacenter1
+  Hosts:             7
+  Clusters:          5
+  Virtual Machines:  66
+  Networks:          37
+  Datastores:        14
+
+PS F:\Template_ovf> govc ls
+/Datacenter2
+/Datacenter1
+
+
+PS F:\Template_ovf> govc ls -l=true Datacenter1/network
+/Datacenter1/network/VM Network 11 (Network)
+/Datacenter1/network/VM Network 13 (Network)
+/Datacenter1/network/VM Network 12 (Network)
+/Datacenter1/network/VM Network 14 (Network)
+/Datacenter1/network/VM Network 15 (Network)
+/Datacenter1/network/Management Network (Network)
+/Datacenter1/network/Distributed Network/
+/Datacenter1/network/Private Network/
+/Datacenter1/network/Production Network/
+/Datacenter1/network/Management Network/
+/Datacenter1/network/Storage Network/
+/Datacenter1/network/UnSorted Network/
+
+----------------
+Export ovf file
+-----------------
+PS F:\Template_ovf> govc export.ovf -dc="Datacenter1" -vm "Template_RedHat_7.6" DIR
+[K[11-03-20 01:01:27] Downloading Template_RedHat_7.6-disk-0.vmdk...
+
+--------------------------------------------------------------------------------------------------------------------
+Import ovf file:
+--------------------------------------------------------------------------------------------------------------------
+PS F:\Template_ovf\DIR\Template_RedHat_7.6> govc import.ovf -ds="datastore1_NVMe" -folder="terraform-test-folder2" -dc="Datacenter1" -name="template_Redhat_ovf" Template_RedHat_7.6.ovf
+***or***
+PS F:\Template_ovf> govc import.ovf -dc="Datacenter1" -name="template_redhat_ovf" Template_RedHat_7.6.ovf
+[K[11-03-20 01:10:07] Uploading Template_RedHat_7.6-1.vmdk... OK00%, 38.1MiB/s)
+[K[11-03-20 01:10:08] Uploading Template_RedHat_7.6-2.iso... OK7%, 37.7MiB/s)
+[K[11-03-20 01:10:09] Uploading Template_RedHat_7.6-3.nvram... OK
+PS F:\Template_ovf>
+
+---------------------------------------------------------------------------------------------------
+Convert to Template:
+---------------------------------------------------------------------------------------------------
+PS F:\Template_ovf> govc vm.markastemplate -dc="Datacenter1" template_redhat_ovf
