@@ -1,0 +1,127 @@
+https://pubs.vmware.com/vsphere-51/index.jsp?topic=%2Fcom.vmware.powercli.cmdletref.doc%2FNew-Datastore.html
+https://vresolv.wordpress.com/2018/02/01/adding-multiple-vmfs-datastores-using-powercli/
+https://davidstamen.com/2014/05/22/create-vmfs-datastore-using-powercli/
+https://davidring.ie/2014/08/21/vmware-powercli-adding-vmfs-datastores/
+
+PowerCLI C:\> Connect-VIServer 192.168.20.24 -verbose
+
+PowerCLI C:\> Connect-VIServer -menu
+Select a server from the list (by typing its number and pressing Enter):
+[1] 172.17.5.140
+[2] vcentre
+[3] 192.168.20.24
+3
+
+Name                           Port  User
+----                           ----  ----
+192.168.20.24                  443   root
+
+
+PowerCLI C:\> $defaultviserver | select *
+
+
+IsConnected   : True
+Id            : /VIServer=root@192.168.20.24:443/
+ServiceUri    : https://192.168.20.24/sdk
+SessionSecret : "bec72bf01a817d68e2b83f16faa527bcfef28a7b"
+Name          : 192.168.20.24
+Port          : 443
+SessionId     : "bec72bf01a817d68e2b83f16faa527bcfef28a7b"
+User          : root
+Uid           : /VIServer=root@192.168.20.24:443/
+Version       : 6.7.3
+Build         : 14320388
+ProductLine   : embeddedEsx
+InstanceUuid  :
+RefCount      : 2
+ExtensionData : VMware.Vim.ServiceInstance
+Client        : VMware.VimAutomation.ViCore.Impl.V1.VimClient
+
+
+
+PowerCLI C:\> $global:DefaultVIServers |select *
+
+
+IsConnected   : True
+Id            : /VIServer=root@192.168.20.24:443/
+ServiceUri    : https://192.168.20.24/sdk
+SessionSecret : "bec72bf01a817d68e2b83f16faa527bcfef28a7b"
+Name          : 192.168.20.24
+Port          : 443
+SessionId     : "bec72bf01a817d68e2b83f16faa527bcfef28a7b"
+User          : root
+Uid           : /VIServer=root@192.168.20.24:443/
+Version       : 6.7.3
+Build         : 14320388
+ProductLine   : embeddedEsx
+InstanceUuid  :
+RefCount      : 2
+ExtensionData : VMware.Vim.ServiceInstance
+Client        : VMware.VimAutomation.ViCore.Impl.V1.VimClient
+
+PowerCLI C:\> get-datastore
+
+Name                               FreeSpaceGB      CapacityGB
+----                               -----------      ----------
+datastore1                              31.095          32.500
+
+
+
+PowerCLI C:\> Get-SCSILun |select canonicalname, capacityGb, runtimename
+
+CanonicalName        CapacityGB RuntimeName
+-------------        ---------- -----------
+mpx.vmhba64:C0:T0:L0
+mpx.vmhba0:C0:T1:L0  5
+mpx.vmhba0:C0:T0:L0  40
+
+
+PowerCLI C:\> Get-SCSILun -luntype disk|select canonicalname, capacityGb, runtimename
+
+CanonicalName       CapacityGB RuntimeName
+-------------       ---------- -----------
+mpx.vmhba0:C0:T1:L0          5
+mpx.vmhba0:C0:T0:L0         40
+
+
+PowerCLI C:\> New-Datastore -name "Datasore-02" -Path mpx.vmhba0:C0:T1:L0 -vmfs
+
+Name                               FreeSpaceGB      CapacityGB
+----                               -----------      ----------
+Datasore-02                              4.053           4.750
+
+
+PowerCLI C:\> get-datastore
+
+Name                               FreeSpaceGB      CapacityGB
+----                               -----------      ----------
+datastore1                              31.095          32.500
+Datasore-02                              4.053           4.750
+
+
+
+PowerCLI C:\> $LUN_1 = Get-SCSILun -luntype disk|where-object {$_.CanonicalName -like "*T1*"} | Select CanonicalName
+PowerCLI C:\> $LUN_1 = $LUN_1 -replace "@{CanonicalName=", ""
+PowerCLI C:\> $LUN_1 = $LUN_1 -replace "}", ""
+PowerCLI C:\> $LUN_1
+mpx.vmhba0:C0:T1:L0
+PowerCLI C:\> New-Datastore -Name VMFS_Datastore_1 -Path $LUN_1 -Vmfs
+
+Name                               FreeSpaceGB      CapacityGB
+----                               -----------      ----------
+VMFS_Datastore_1                         4.053           4.750
+
+
+PowerCLI C:\> get-datastore
+
+Name                               FreeSpaceGB      CapacityGB
+----                               -----------      ----------
+datastore1                              31.095          32.500
+VMFS_Datastore_1                         4.053           4.750
+
+
+
+Installing PowerCLI on RHEL:
+https://ithinkvirtual.com/2018/03/04/install-powershell-and-vmware-powercli-on-centos/
+https://davidwzhang.com/2018/06/21/install-powernsx-offline-on-rhel7/
+
