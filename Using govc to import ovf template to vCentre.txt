@@ -117,3 +117,6 @@ govc snapshot.create -dc="Datacenter1"  -vm="template_redhat_ovf" clone-root
 Convert to Template:
 ---------------------------------------------------------------------------------------------------
 PS F:\Template_ovf> govc vm.markastemplate -dc="Datacenter1" template_redhat_ovf
+
+import ovf using powercli:
+Import-vApp -Source C:\temp\LinuxTools02\LinuxTools02.ovf -VMHost $vmHost -Datastore $myDatastore -Location $myCluster -Name "LinuxTools01"
